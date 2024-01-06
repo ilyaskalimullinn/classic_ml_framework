@@ -42,7 +42,7 @@ class RandomForest(BaseModel):
             tree.fit(X, y, weights)
             self.trees.append(tree)
 
-    def predict(self, X: np.ndarray) -> None:
+    def predict(self, X: np.ndarray) -> np.ndarray:
         predictions = []
         for tree in self.trees:
             predictions.append(tree.predict(X))

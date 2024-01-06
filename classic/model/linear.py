@@ -23,7 +23,7 @@ class BaseLinearRegression(BaseModel):
             X = np.hstack((np.ones(shape=(X.shape[0], 1)), X))
         self._fit(X, y, *args, **kwargs)
     
-    def predict(self, X: np.ndarray) -> None:
+    def predict(self, X: np.ndarray) -> np.ndarray:
         if self.weights is None:
             raise NotFittedError
         
@@ -32,7 +32,7 @@ class BaseLinearRegression(BaseModel):
         
         return self._predict(X)
 
-    def _predict(self, X_with_ones: np.ndarray) -> None:
+    def _predict(self, X_with_ones: np.ndarray) -> np.ndarray:
         return X_with_ones @ self.weights
     
     @abc.abstractmethod
@@ -137,7 +137,7 @@ class LinearBinaryClassificator(SGDRegression):
                          batch_size, do_shuffle, regularisation, alpha)
         self.sigmoid = expit
 
-    def _predict(self, X_with_ones: np.ndarray) -> None:
+    def _predict(self, X_with_ones: np.ndarray) -> np.ndarray:
         pred = super()._predict(X_with_ones)
         pred[pred >= 0] = 1
         pred[pred < 0] = -1

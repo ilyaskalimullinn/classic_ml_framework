@@ -7,5 +7,5 @@ class BaseModel(abc.ABC):
         raise NotImplementedError
 
     @abc.abstractmethod
-    def predict(self, X: np.ndarray, *args, **kwargs) -> None:
+    def predict(self, X: np.ndarray, *args, **kwargs) -> np.ndarray:
         raise NotImplementedError

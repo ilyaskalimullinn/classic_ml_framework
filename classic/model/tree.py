@@ -166,7 +166,7 @@ class DecisionTree(BaseModel):
     ) -> None:
         pass
 
-    def predict(self, X: np.ndarray) -> None:
+    def predict(self, X: np.ndarray) -> np.ndarray:
         pred = []
         for i in range(X.shape[0]):
             pred.append(self._predict_one(X[i]))
