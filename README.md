@@ -1,8 +1,8 @@
 # Classic Machine Learning models
 
-This repository contains some of my implementations of classic ML models such as Linear Regression, Decision Tree Regression, Gradient Boosting, etc. You can say that this is a basic mini-framework. Nothing too fancy, mainly it's just an exercise to make sure that I understand everything correctly.
+This repository contains some of my implementations of classic ML models such as Linear Regression, Decision Tree Regression, Gradient Boosting, etc. You can say that this is a basic mini-framework. Nothing too fancy, for the most part it's just an exercise to make sure that I understand everything correctly.
 
-These are mainly from my homeworks in KFU ITIS. I improved some of them, added something new. I also didn't include some stuff like AdaBoost. Maybe later! In any case, you can find my original homeworks in my GitHub.
+These is mainly a compilation of my homework in KFU ITIS. I improved some of it, added something new. I also didn't include some stuff like AdaBoost. Maybe later! In any case, you can find repositories with my original homework in my GitHub.
 
 ## How to check it out
 
