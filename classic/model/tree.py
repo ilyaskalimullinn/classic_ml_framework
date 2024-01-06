@@ -275,3 +275,40 @@ class DecisionTreeClassifier(DecisionTree):
             p /= np.sum(p)
 
         node.terminal_node = p  # .reshape(1, -1)
+
+
+class DecisionTreeMultiRegressor(DecisionTree):
+    def __init__(
+        self,
+        criterion: Literal["variance"] = "variance",
+        max_depth: int = 0,
+        min_samples_split: int = 2,
+        random_state: int | None = None,
+        subsample_ratio: float = 1,
+    ) -> None:
+        super().__init__(
+            criterion, max_depth, min_samples_split, random_state, subsample_ratio
+        )
+
+    def _calc_node_criterion_variance(
+        self, targets: np.ndarray, weights: np.ndarray | None = None
+    ) -> float:
+        if weights is None:
+            return np.var(targets, axis=0).mean()
+        else:
+            a = np.square(targets - np.mean(targets, axis=0))
+            a = a * weights.reshape(-1, 1)
+            a = a.mean(axis=0)
+            return np.mean(a)
+
+    def _build_terminal_node(
+        self,
+        node: Node,
+        X: np.ndarray,
+        y: np.ndarray,
+        weights: np.ndarray | None = None,
+    ) -> None:
+        if weights is None:
+            node.terminal_node = np.mean(y, axis=0)
+        else:
+            node.terminal_node = np.sum(y * weights.reshape(-1, 1)) / np.sum(weights)
